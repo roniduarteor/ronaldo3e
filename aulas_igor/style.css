@@ -1,0 +1,35 @@
+.caixas{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px black solid;
+    
+}
+
+body{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px black solid;
+    height: 100vh;
+}
+
+.botao1{
+    border: 1px black solid;
+    height: 200px;
+    width: 700px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
+
+.conteudo{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 1px black solid;
+    height: 200px;
+    width: 500px;
+}
+
