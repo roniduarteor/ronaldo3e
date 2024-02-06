@@ -4,27 +4,32 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Calcular IMC</title>
     <link rel="stylesheet" href="style.css">
+
+    <link rel="shortcut icon" href="./3884483.png" type="image.png">
 </head>
 <body>
     <script src="script.js"></script>
 
-    <div class="conteudo">
+<div class="conteudo">
+
+    <h1 class="titulo">Cálculo de IMC</h1>
+
     <div class="caixas">
      <label for="peso">Peso:</label>
-    <input type="number" id="peso" required>
+    <input type="number" id="peso" required placeholder="Digite o peso em (Kg)" onkeydown="if(event.keyCode==13) verificarSeTemCoisa(event)">
     
 
     <label for="altura">Altura:</label>
-    <input type="number" id="altura" required> 
+    <input type="number" id="altura" required placeholder="Digite a altura em metros" onkeydown="if(event.keyCode==13) verificarSeTemCoisa(event)"> 
     </div>
 
     <div class="botao1">
         <button id="botao" onclick="calcular()">Calcular IMC</button>
     </div>
 
-    <div id="resultado"><h1></h1></div>
+    <div id="resultado"><h1 class="resultado2">...</h1></div>
 </div>
 </body>
 </html>
