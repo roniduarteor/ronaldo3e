@@ -4,5 +4,8 @@ const numeros = [1, 2, 3, 4, 5]
 const dobro = numeros.map((numero)=> {return numero*2})
 const triplo = numeros.map((numero)=> {return numero*3})
 
+const soma = dobro + triplo
+
+
 console.log(dobro)
 console.log(triplo)

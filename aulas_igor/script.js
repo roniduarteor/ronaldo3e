@@ -9,7 +9,7 @@ function calcular(){
     else if(IMC >= 17 && IMC <= 18.4){
         document.getElementById("resultado").innerHTML = `${IMC.toFixed(2)} - Abaixo do peso` 
     }
-    else if(IMC >= 18 && IMC <= 24.9){
+    else if(IMC >= 18.5 && IMC <= 24.9){
         document.getElementById("resultado").innerHTML = `${IMC.toFixed(2)} - Peso normal` 
     }
     else if(IMC >= 25 && IMC <= 29.9){
