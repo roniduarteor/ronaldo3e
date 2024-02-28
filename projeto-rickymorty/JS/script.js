@@ -8,14 +8,19 @@ const baseUrl = 'https://rickandmortyapi.com/api'
 const loadCharacter = async ()=>{ // ja q essa função vai fazer uma requisição HTTP, ela precisa ser assincrona (async)
     const res = await fetch(`${baseUrl}/character?page=${page}`)
     const data = await res.json()
-    const limitData = data.results.slice(0,9)
+    const limitData = data.results.slice(12,18)
     
     return {results: limitData}
 }
 
+
+
 const loadLocation = async ()=>{
-    const res = await fetch(`${baseUrl}/location`)
-    return await res.json()
+    const res = await fetch(`${baseUrl}/character?page=${page}`)
+    const data = await res.json()
+    const limitData = data.results.slice(0,10)
+    
+    return {results: limitData}
 }
 
 const loadEpisode = async ()=>{
@@ -31,7 +36,7 @@ const loadAllWithPromiseAll = async ()=>{
         loadEpisode()
     ])
     showCharacter(character.results) // results pra mostrar só os dados especificos daquela api (nesse caso os personagens)
-    showCharacter(location.results)
+    showLocation(location.results)
     console.log("Episode: ",episode.results)
 }
 
@@ -41,11 +46,13 @@ function showCharacter(characters){
     const characterContainer = document.getElementById('character-container');
     characters.map((character)=>{
         const divCharacter = document.createElement('div')
+        divCharacter.id = `character-${character.id}`
+
         divCharacter.innerHTML = `
             <img src="${character.image}" alt="Imagem do personagem">
             <article class="character-info">
                 <h3>${character.name}</h3>
-                <span class="status"><div></div>${character.status} - ${character.species}</span>
+                <span class="${character.status}"><div class="alive"></div>${character.status} - ${character.species}</span>
                 
                 <div class="lastLocation">
                 <span class="lastLocationText">Last know location:</span>
@@ -65,6 +72,34 @@ function showCharacter(characters){
             console.log(character.status)
             divCharacter.classList.add('character-box')
         characterContainer.appendChild(divCharacter) // tudo isso pra fazer aparecer as informações no HTML
-    })
 
+        divCharacter.addEventListener(`click`, async()=>{
+            characterDetails(character.id)
+        })
+    });
+}
+
+function characterDetails(id){ // parametro ID pois está recebendo o id do personagem
+    const idCrypted = encryptId(id)
+    window.location.href = `./PAGES/character.html?id=${idCrypted}` // isso aqui vai fazer com que abre em outra página com as informações daquele personagem de acordo com o ID dele
+}
+
+function encryptId(id){
+    return id.toString(36)
+}
+
+function showLocation(locations){
+    const locationContainer = document.getElementById('location-container')
+    locations.map((location)=>{
+        const divLocation = document.createElement('div')
+        divLocation.innerHTML=`
+        <p class"title">${location.name}</p>
+        <p class"type">${location.type}</p>
+        <p class"dimension">${location.dimension}</p>
+        <p class"residents">${location.residents.length}</p>
+        `;
+        divLocation.classList.add('location-box')
+        locationContainer.appendChild(divLocation)
+    })
+    console.log(locations)
 }

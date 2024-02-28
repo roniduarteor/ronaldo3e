@@ -95,13 +95,23 @@ body{
 }
 
 .character-box img{
-    width: 200px;
+    width: 50%;
     border-top-left-radius: 8px;
     border-bottom-left-radius: 8px;
+
+    
+}
+
+.character-info{
+    padding-top: 1rem;
+    display: flex;
+    flex-direction: column;
+
+    cursor: pointer;
 }
 
 .character-info h3{
-    font-size: 30px;
+    font-size: 1.5rem;
     margin: 5px;
 }
 
@@ -119,7 +129,20 @@ body{
     width: 10px;
     height: 10px;
     border-radius: 100px;
+
+    display: inline-block;
 }
+.character-info span .Dead::before{
+    margin-right: 10px;
+    background-color: red;
+    width: 10px;
+    height: 10px;
+    border-radius: 100px;
+
+    display: inline-block;
+}
+
+
 
 .character-info .lastLocation{
     width: 400px;
@@ -147,6 +170,10 @@ body{
      font-weight: 300;
 }
 
+.character-info .location-box a:hover{
+    color: var(--orange-400);
+}
+
 .character-info .origin{
     display: flex;
     flex-direction: column;
@@ -168,4 +195,8 @@ body{
 
      font-size: 20px;
      font-weight: 300;
+}
+
+.location-container{
+    color: var(--gray-800);
 }
